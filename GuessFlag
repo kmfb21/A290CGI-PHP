@@ -1,0 +1,70 @@
+#!/usr/bin/python
+
+import cgi, random
+
+print "Content-type:text/html\n\n<html><body>"
+
+url = "http://www.cs.indiana.edu/classes/a202-dger/fall2005/notes/flagquiz/images"
+
+names = ["Australia", "United States", "Russia", "Spain", "Italy", "South Africa", "Brazil", "China"]
+
+random.shuffle(names)
+
+q=cgi.FieldStorage()
+
+message   = q.getvalue("message"  , "") # state  variable 
+questions = q.getvalue("questions", "") # state  variable 
+key       = q.getvalue("key"      , "") # state  variable 
+correct   = q.getvalue("correct"  , "") # state  variable 
+total     = q.getvalue("total"    , "") # state  variable 
+
+answer    = q.getvalue("answer"   , "") # input variables 
+reset     = q.getvalue("reset"    , "") # input variables 
+
+question  = ""                          # output variable 
+
+if message and not reset:
+  if key:
+    if answer == key: 
+     correct = str(int(correct) + 1)
+     message = "Very good."
+    else: 
+      message="No, that was not it."
+    total = str(int(total) + 1)
+    message += "score currently: " + correct + " out of " + total + "."
+  else:
+    message = "Welcome to the new game, score currently: " + correct + " out of " + total + "."  
+  if questions:
+    names = questions.split(",")
+    key = names[0] 
+    questions = ",".join(names[1:])
+    question = "Whose country is this flag: \
+                <img src='%s/%s.png'><input type=text name='answer'><p>" % (url,key)
+  else:
+    question  = "The game has ended, new game starting, are you ready? <p>"
+    correct   = "0"
+    total     = "0"
+    questions = ",".join(names)
+    key       = ""
+else:
+  message="Welcome to the game, are you ready?"
+  correct   = "0"
+  total     = "0"
+  questions = ",".join(names)
+  key       = ""
+
+print """
+    <form>
+      %s <p>
+      %s
+      Press <input type="submit" name=submit value="Proceed"> to move on.<p> 
+      <input type="hidden" name="message"   value="%s"> 
+      <input type="hidden" name="questions" value="%s">
+      <input type="hidden" name="key"       value="%s"> 
+      <input type="hidden" name="correct"   value="%s">
+      <input type="hidden" name="total"     value="%s"> 
+      Press <input type="submit" name="reset" value="Reset"> to reset the game.
+    </form> 
+  </body> 
+</html> """ % (message, question, message, questions, key, correct, total)
+
