@@ -1,0 +1,22 @@
+#!/usr/bin/python
+print "Content-Type: text/html\n"
+import cgi, cgitb, random
+cgitb.enable()
+form = cgi.FieldStorage()
+
+imgs=[i for i in range(3)]
+imgs[0] = "http://www.cs.indiana.edu/classes/a348-dger/spr2006/new.gif"
+imgs[1] = "http://www.cs.indiana.edu/classes/a348-dger/spr2006/due.gif"
+imgs[2] = "http://www.cs.indiana.edu/classes/a348-dger/spr2006/classNotes.gif"
+i = random.randint(0,2)
+
+print """
+<html>
+  <head>
+  <title>Random Picture</title>
+  </head>
+  <body>
+    <img src=%s>
+  </body>
+</html>
+""" % (imgs[i])
