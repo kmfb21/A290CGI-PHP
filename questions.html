@@ -1,0 +1,120 @@
+<html>
+  <head>
+    <title>Final Questions</title>
+  </head>
+  <body>
+    <h2>SQL Questions:</h2>
+    <ol>
+      <li>What does SQL stand for?<p>
+	Structured Query Language
+      <li>Which SQL statement is used to extract data from a database?<p>
+	SELECT
+      <li>Which SQL statement is used to update data in a database?<p>
+	UPDATE
+      <li>Which SQL statement is used to delete data from a database?<p>
+	DELETE
+      <li>Which SQL statement is used to insert new data in a database?<p>
+	INSERT INTO
+      <li>With SQL, how do you select a column named "FirstName" from a table named "Persons"?<p>
+	SELECT FirstName FROM Persons
+      <li>With SQL, how do you select all the columns from a table named "Persons"?<p>
+	SELECT * FROM Persons
+      <li>With SQL, how do you select all the records from a table named "Persons" where the value of the column "FirstName" is "Peter"?<p>
+	SELECT * FROM Persons WHERE FirstName='Peter'
+      <li>With SQL, how do you select all the records from a table named "Persons" where the value of the column "FirstName" starts with an "a"?<p>
+	SELECT * FROM Persons WHERE FirstName LIKE 'a%'
+      <li>True or False: The OR operator displays a record if ANY conditions listed are true. The AND operator displays a record if ALL of the conditions listed are true<p>
+	True
+      <li>With SQL, how do you select all the records from a table named "Persons" where the "FirstName" is "Peter" and the "LastName" is "Jackson"?<p>
+	SELECT * FROM Persons WHERE FirstName='Peter' AND LastName='Jackson'
+      <li>With SQL, how do you select all the records from a table named "Persons" where the "LastName" is alphabetically between (and including) "Hansen" and "Pettersen"?<p>
+	WRONG-------SELECT * FROM Persons WHERE LastName>'Hansen' AND LastName<'Pettersen'<p>
+	SELECT * FROM Persons WHERE LastName BETWEEN 'Hansen' AND 'Pettersen'
+      <li>Which SQL statement is used to return only different values?<p>
+	SELECT DISTINCT
+      <li>Which SQL keyword is used to sort the result-set?<p>
+	WRONG-------SORT BY<p>
+	WRONG-------ORDER<p>
+	ORDER BY
+      <li>With SQL, how can you return all the records from a table named "Persons" sorted descending by "FirstName"?<p>
+	WRONG-------SELECT * FROM Persons SORT BY 'FirstName' DESC<p>
+	WRONG-------SELECT * FROM Persons ORDER FirstName DESC<p>
+	SELECT * FROM Persons ORDER BY FirstName DESC
+      <li>With SQL, how can you insert a new record into the "Persons" table?<p>
+	INSERT INTO Persons VALUES ('Jimmy', 'Jackson')
+      <li>With SQL, how can you insert "Olsen" as the "LastName" in the "Persons" table?<p>
+	INSERT INTO Persons (LastName) VALUES ('Olsen')
+      <li>How can you change "Hansen" into "Nilsen" in the "LastName" column in the Persons table?<p>
+	UPDATE Persons SET LastName='Nilsen' WHERE LastName='Hansen'
+      <li>With SQL, how can you delete the records where the "FirstName" is "Peter" in the Persons Table?<p>
+	DELETE FROM Persons WHERE FirstName = 'Peter'
+      <li> With SQL, how can you return the number of records in the "Persons" table?<p>
+	SELECT COUNT(*) FROM Persons
+      <li>What is the most common type of join?<p>
+	WRONG-------JOINED TABLE<p>
+	INNER JOIN
+      <li>Which operator is used to select values within a range?<p>
+	BETWEEN
+      <li>True or False:  The NOT NULL constraint enforces a column to not accept null values.<p>
+	True
+      <li>Which operator is used to search for a specified pattern in a column?<p>
+	LIKE
+      <li>Which SQL statement is used to create a table in a database?<p>
+	CREATE TABLE
+    </ol>
+    <h2>PHP Questions</h2>
+    <ol>
+      <li>What does PHP stand for?<p>
+	PHP: Hypertext Preprocessor
+      <li>PHP server scripts are surrounded by delimiters, which?<p>
+	&lt;?php...?>
+      <li>How do you write "Hello World" in PHP<p>
+	echo "Hello World";
+      <li>All variables in PHP start with which symbol?<p>
+	$
+      <li>What is the correct way to end a PHP statement?<p>
+	;
+      <li>The PHP syntax is most similar to? VBScript, Perl and C, JavaScript<p>
+	Perl and C
+      <li>How do you get information from a form that is submitted using the "get" method?<p>
+	$_GET[];
+      <li>True or False: When using the POST method, variables are displayed in the URL<p>
+	False
+      <li>True or False: In PHP you can use both single quotes ( ' ' ) and double quotes ( " " ) for strings<p>
+	True
+      <li>True or False: Include files must have the file extension ".inc"<p>
+	False
+      <li>What is the correct way to include the file "time.inc" ?<p>
+	WRONG------&lt;?php include:"time.inc"; ?><p>
+	&lt;?php include "time.inc"; ?>
+      <li>What is the correct way to create a function in PHP?<p>
+	function myFunction()
+      <li>What is the correct way to open the file "time.txt" as readable?<p>
+	fopen("time.txt","r");
+      <li>True or False: PHP allows you to send emails directly from a script<p>
+	True
+      <li>Which superglobal variable holds information about headers, paths, and script locations?<p>
+	$_SERVER
+      <li>What is the correct way to add 1 to the $count variable?<p>
+	$count++;
+      <li>What is a correct way to add a comment in PHP?<p>
+	/*...*/
+      <li>True or False: PHP can be run on Microsoft Windows IIS(Internet Information Server)<p>
+	True
+      <li>True or False: The die() and exit() functions do the exact same thing.<p>
+	True
+      <li>Which one of these variables has an illegal name: $my-Var $my_Var $myVar<p>
+	$my-Var
+      <li>True or False: The setcookie() function must appear BEFORE the <html> tag.<p>
+	True
+      <li>True or False: In PHP, the only way to output text is with echo.<p>
+	False
+      <li>How do you create an array in PHP?<p>
+	$cars = array("Volvo", "BMW", "Toyota");
+      <li>True or False: The if statement is used to execute some code only if a specified condition is true<p>
+	True
+      <li>Which operator is used to compare two values: =, >=, ==, !=<p>
+	==
+    </ol>
+  </body>
+</html>
