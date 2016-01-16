@@ -1,0 +1,35 @@
+#!/usr/bin/python
+
+import cgi, random, MySQLdb, sys, os
+
+(message, session_id, balance, action, id) = ("", "", "", "", "")
+print "Content-type: text/html\n\n"
+
+q = cgi.FieldStorage()
+if q.has_key("action"): action = q["action"].value
+
+Con = MySQLdb.Connect(host="silo.cs.indiana.edu", port=11006, user="bofang", passwd="0", db="vegetables")
+Cursor = Con.cursor()
+
+if q.has_key("session_id") and action != "Reset":
+  id = q["session_id"].value
+  Cursor.execute( "SELECT message, balance FROM example WHERE session_id = '%s'" % q["session_id"].value )
+  Results = Cursor.fetchall()
+  (message, balance) = Results[0]
+  balance = str(int(balance) + 1)
+  message = " You have clicked me %s times. " % balance
+  Cursor.execute( "update example set message = '%s', balance = '%s' where session_id = '%s'" % (message, balance, q["session_id"].value) )
+else:
+  balance = 0
+  message = "Welcome."
+  for i in range(8): id += str(random.randrange(10))
+  if not Cursor.execute( "insert into example (session_id, balance, message) values ('%s', '%s', '%s')" % (id, balance, message) ):
+    print "Content-type: text/html\n\nError. Please reload."
+    sys.exit()
+
+print """
+  <form>
+    %s <input type=submit name=action value=Proceed> <input type=submit name=action value=Reset>
+    <input type=hidden name=session_id value=%s>
+  </form>
+""" % (message, id)
