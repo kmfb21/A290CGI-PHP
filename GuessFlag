@@ -67,4 +67,3 @@ print """
     </form> 
   </body> 
 </html> """ % (message, question, message, questions, key, correct, total)
-
